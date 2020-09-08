@@ -95,7 +95,7 @@ const FriendsList = () => {
 					type='text'
 					name='name'
 					id='name'
-					value={friend.username}
+					value={friend.name}
 					onChange={onChange}
 				/>
 				<br />
@@ -113,7 +113,7 @@ const FriendsList = () => {
 					type='text'
 					name='email'
 					id='email'
-					value={friend.password}
+					value={friend.email}
 					onChange={onChange}
 				/>
 				<br />
