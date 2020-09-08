@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-const Login = ({ setUsers, users }) => {
+const Login = () => {
+	const history = useHistory();
 	const [credentials, setCredentials] = useState({
 		username: '',
 		password: '',
@@ -13,12 +15,13 @@ const Login = ({ setUsers, users }) => {
 
 	const login = (e) => {
 		e.preventDefault();
+		console.log(credentials);
 		axios
-			.post('localhost:5000/', credentials)
+			.post('http://localhost:5000/api/login', credentials)
 			.then((res) => {
-				localStorage.setItem('token', res.data.token);
-				window.history.push('/protected');
+				localStorage.setItem('token', res.data.payload);
 				console.log(res);
+				history.push('/api/friends');
 			})
 			.catch((err) => {
 				console.log('Error in login function! ', err);
